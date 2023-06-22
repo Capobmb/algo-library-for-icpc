@@ -3,8 +3,9 @@
     get(n): クエリ。素因数分解を求める。O(log n)
  */
 struct RapidPrimeFact {
+    int MAX;
     vector<int> spf;
-    RapidPrimeFact(int N) { init(N); }
+    RapidPrimeFact(int N) : MAX(N) { init(N); }
     void init(int N) { // 前処理。spf を求める
         spf.assign(N + 1, 0);
         for (int i = 0; i <= N; i++) spf[i] = i;
@@ -19,9 +20,17 @@ struct RapidPrimeFact {
         }
     }
 
-    bool is_prime(int n) {
+    bool is_prime(int n) const {
         if (n == 1) return false;
         return spf[n] == n;
+    }
+
+    std::vector<int> primes() const {
+        std::vector<int> p;
+        for(int i = 2; i < MAX; i++) {
+            if(is_prime(i)) p.push_back(i);
+        }
+        return p;
     }
 
     vector<pair<int, int>> get_prime_factorization(int n) { 

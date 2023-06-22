@@ -1,5 +1,7 @@
+#include<vector>
+
+
 /**
- * @struct Euler Phi
  * @brief Euler Phi Function
  */
 struct euler_phi {
@@ -7,7 +9,7 @@ struct euler_phi {
 
     /**
      * @brief Construct a new euler phi object. Time Complexity: O(MAXloglogMAX)
-     * @param MAX sqrt(x_max) < MAX <= 10^7
+     * @param MAX MAX <= 4 * 10^7 AND x_max < MAX^2
      */
     euler_phi(int MAX) : sieve(MAX) {
         for (int i = 0; i < MAX; ++i) sieve[i] = i;
@@ -20,10 +22,10 @@ struct euler_phi {
     }
 
     /**
-     * @brief return φ(x). Time Complexity: O(sqrt(x))
+     * @brief Time Complexity: O(sqrt(x))
      * @return φ(x)
      */
-    long long operator()(long long x) const {
+    long long operator()(long long x) const noexcept {
         long long ret = 1;
         for (long long i = 2, b = x; i * i <= b; ++i) {
             if (sieve[i] < i) continue;
