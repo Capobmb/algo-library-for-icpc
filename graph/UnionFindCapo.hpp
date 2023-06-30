@@ -54,23 +54,23 @@ struct UnionFind {
      */
     int components() const { return comps; }
     /**
-     * @return vector<vector<int>> : List of connected components each of which contains vertex
+     * @return V<V<int>> : List of connected components each of which contains vertex
      */
-    std::vector<std::vector<int>> list_components() {
+    V<V<int>> list_components() {
         int n = parent.size();
-        std::vector<int> root_buf(n);
+        V<int> root_buf(n);
         for(int i = 0; i < n; i++) root_buf[i] = root(i);
-        std::vector<std::vector<int>> result;
+        V<V<int>> result;
         for(int i = 0; i < n; i++) result[root_buf[i]].push_back(i);
 
         result.erase(
             std::remove_if(result.begin(), result.end(),
-                           [&](const std::vector<int>& v) { return v.empty(); }),
+                           [&](const V<int>& v) { return v.empty(); }),
             result.end());
         return result;
     }
 
 private :
-    std::vector<int> parent, size, edge;
+    V<int> parent, size, edge;
     int comps;
 };

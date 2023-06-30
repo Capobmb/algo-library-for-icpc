@@ -5,11 +5,11 @@
 // (0, 0) は (0, -1) と同じ偏角となる
 // 偏角 -pi/2 ~ 3pi/2 でsort
 template<typename T>
-std::vector<std::pair<T, T>> argsort(std::vector<std::pair<T, T>>& v) {
-    static_assert(std::is_integral_v<T>, "Non-integral type vectors should not be argsorted.");
-    using ll = long long;
+V<std::pair<T, T>> argsort(V<std::pair<T, T>>& v) {
+    static_assert(std::is_integral_v<T>, "Non-integral type Vs should not be argsorted.");
+    using ll = ll;
     // 左半平面, 右半平面, y軸負, y軸正
-    std::vector<std::pair<T,T>> l, r, zn, zp;
+    V<std::pair<T,T>> l, r, zn, zp;
     for(auto&& p : v) {
         if(p.first < 0) l.push_back(p);
         else if(p.first > 0) r.push_back(p);

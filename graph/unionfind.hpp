@@ -1,6 +1,6 @@
 struct UnionFind {
-    vector<int> par, rank, siz;
-    // vector<bool> is_tree_impl;
+    V<int> par, rank, siz;
+    // V<bool> is_tree_impl;
 
     // initialization
     UnionFind(int N) : par(N, -1), rank(N, 0), siz(N, 1) 

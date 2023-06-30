@@ -2,15 +2,15 @@
 
 /**
 * @brief Slide minimum algorithm
-* @param a vector with typename T
+* @param a V with typename T
 * @param len length of ranges that acquires minimum value
-* @return vector of indices which attains { min{a[0], ... , a[len-1]}, min{a[1], ... , a[len]}, min{a[n-len], ... , a[n-1]} }
+* @return V of indices which attains { min{a[0], ... , a[len-1]}, min{a[1], ... , a[len]}, min{a[n-len], ... , a[n-1]} }
 */
 template<typename T>
-std::vector<int> range_min(const std::vector<T>& a, int len) {
+V<int> range_min(const V<T>& a, int len) {
     const int n = a.size();
     assert(1 <= len && len <= n);
-    std::vector<int> ret(n - len + 1);
+    V<int> ret(n - len + 1);
     std::deque<int> que;
 
     for(int i = 0; i < n; ++i) {
@@ -30,15 +30,15 @@ std::vector<int> range_min(const std::vector<T>& a, int len) {
 
 /**
 * @brief Slide maximum algorithm
-* @param a vector with typename T
+* @param a V with typename T
 * @param len length of ranges that acquires maximum value
-* @return vector of indices which attains { max{a[0], ... , a[len-1]}, max{a[1], ... , a[len]}, max{a[n-len], ... , a[n-1]} }
+* @return V of indices which attains { max{a[0], ... , a[len-1]}, max{a[1], ... , a[len]}, max{a[n-len], ... , a[n-1]} }
 */
 template<typename T>
-std::vector<int> range_max(const std::vector<T>& a, int len) {
+V<int> range_max(const V<T>& a, int len) {
     const int n = a.size();
     assert(1 <= len && len <= n);
-    std::vector<int> ret(n - len + 1);
+    V<int> ret(n - len + 1);
     std::deque<int> que;
 
     for(int i = 0; i < n; ++i) {

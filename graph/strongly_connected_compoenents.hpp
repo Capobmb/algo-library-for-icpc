@@ -9,11 +9,11 @@ struct Edge {
 template <typename T>
 struct StronglyConnectedComponents {
     int vertex_size;
-    vector<vector<Edge<T>>> edges, r_edges;
-    vector<int> order, component;
-    vector<bool> used, r_used;
+    V<V<Edge<T>>> edges, r_edges;
+    V<int> order, component;
+    V<bool> used, r_used;
 
-    StronglyConnectedComponents(vector<vector<Edge<T>>> &edges_) : 
+    StronglyConnectedComponents(V<V<Edge<T>>> &edges_) : 
     vertex_size(edges_.size()), edges(edges_), 
     r_edges(vertex_size), component(vertex_size), 
     used(vertex_size), r_used(vertex_size) {
@@ -52,10 +52,10 @@ struct StronglyConnectedComponents {
 
     bool is_same(int u, int v) {return component[u] == component[v];}
 
-    vector<vector<int>> rebuild() {
+    V<V<int>> rebuild() {
         int rebuild_vertex_size = *max_element(component.begin(), component.end()) + 1;
         dbg(rebuild_vertex_size);
-        vector<vector<int>> res(rebuild_vertex_size);
+        V<V<int>> res(rebuild_vertex_size);
         set<pair<int, int>> connected;
         for (int cv = 0; cv < vertex_size; cv++) {
             for (auto& [nv, ncost] : edges[cv]) {

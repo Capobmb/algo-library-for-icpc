@@ -1,10 +1,10 @@
 struct LowestCommonAncestor {
     // parent[k][v] := v の 2^k 個先の親
-    vector<vector<int>> parent;
+    V<V<int>> parent;
     // dist[i] := 根から i までの距離
-    vector<int> dist;
+    V<int> dist;
 
-    LowestCommonAncestor(const vector<vector<int>> &edges, int root=0) {
+    LowestCommonAncestor(const V<V<int>> &edges, int root=0) {
         init(edges, root);
     }
 
@@ -12,11 +12,11 @@ struct LowestCommonAncestor {
         前処理
         O(N log N)
     */
-    void init(const vector<vector<int>> &edges, int root=0) {
+    void init(const V<V<int>> &edges, int root=0) {
         int vertex_size = (int)edges.size();
         int log_vertex_size = 1;
         while ((1 << log_vertex_size) < vertex_size) log_vertex_size++;
-        parent.assign(log_vertex_size, vector<int>(vertex_size, -1));
+        parent.assign(log_vertex_size, V<int>(vertex_size, -1));
         dist.assign(vertex_size, -1);
         parent_init(edges, -1, root);
         dist_from_root(edges, -1, root, 0);
@@ -29,14 +29,14 @@ struct LowestCommonAncestor {
         }
     }
 
-    void parent_init(const vector<vector<int>> &edges, int pre, int cur) {
+    void parent_init(const V<V<int>> &edges, int pre, int cur) {
         parent[0][cur] = pre;
         for (auto& nxt : edges[cur]) {
             if (nxt != pre) parent_init(edges, cur, nxt);
         }
     }
 
-    void dist_from_root(const vector<vector<int>> &edges, int pre, int cur, int dist_from_root_to_cur) {
+    void dist_from_root(const V<V<int>> &edges, int pre, int cur, int dist_from_root_to_cur) {
         dist[cur] = dist_from_root_to_cur;
         for (auto& nxt : edges[cur]) {
             if (nxt != pre) 

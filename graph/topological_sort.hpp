@@ -1,6 +1,6 @@
-vector<int> topological_sort(vector<vector<int> > &G, vector<int> &indegree) {
+V<int> topological_sort(V<V<int> > &G, V<int> &indegree) {
     // 入力の段階で indegree をいじっておくことを忘れない！
-    vector<int> res;
+    V<int> res;
     int N = G.size(); // 頂点数
     queue<int> que;
     rep(i, N) {

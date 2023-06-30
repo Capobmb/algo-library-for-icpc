@@ -12,11 +12,11 @@ using namespace std;
 struct LCA {
   public:
     // コンストラクタ(隣接リストG, 根root=0 を指定)
-    LCA(const vector<vector<int>> &G, int root = 0) : n(G.size()) {
+    LCA(const V<V<int>> &G, int root = 0) : n(G.size()) {
         K = 1;
         while ((1 << K) < n) K++;
 
-        parent.assign(K, vector<int>(n, -1));
+        parent.assign(K, V<int>(n, -1));
         dist.assign(n, -1);
 
         dfs(G, root, -1, 0);
@@ -63,7 +63,7 @@ struct LCA {
 
   private:
     // dfsをして根からの距離と1つ先の頂点を求める
-    void dfs(const vector<vector<int>> &G, int now, int p, int d) { // グラフG, 今の頂点now, vの親p, 根からの距離d
+    void dfs(const V<V<int>> &G, int now, int p, int d) { // グラフG, 今の頂点now, vの親p, 根からの距離d
         parent[0][now] = p;
         dist[now] = d;
         for (auto to : G[now]) {
@@ -71,7 +71,7 @@ struct LCA {
         }
     }
 
-    vector<vector<int>> parent;  // parent[k][u]:= u の 2^k 先の親
-    vector<int> dist;            // root からの距離
+    V<V<int>> parent;  // parent[k][u]:= u の 2^k 先の親
+    V<int> dist;            // root からの距離
     int n, K;                    // 頂点数, N以上最小の2べきの指数
 };

@@ -1,10 +1,10 @@
 struct UnionFind2D {
-    vector<vector<pair<int, int>>> par;
-    vector<vector<int>> rank, siz;
+    V<V<pair<int, int>>> par;
+    V<V<int>> rank, siz;
 
     UnionFind2D(int H, int W) : 
-        par(H, vector<pair<int, int>>(W, {-1, -1})), 
-        rank(H, vector<int>(W)), siz(H, vector<int>(W)) {}
+        par(H, V<pair<int, int>>(W, {-1, -1})), 
+        rank(H, V<int>(W)), siz(H, V<int>(W)) {}
 
     pair<int, int> root(int x, int y) {
         if (par[x][y] == make_pair(-1, -1)) {

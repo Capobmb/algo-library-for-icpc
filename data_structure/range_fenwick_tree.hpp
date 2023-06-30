@@ -2,7 +2,7 @@
 template <typename T>
 struct FenwickTreeRange {
     int n;             // 要素数
-    vector<T> bit[2];  // データの格納先
+    V<T> bit[2];  // データの格納先
     FenwickTreeRange(int n_) { init(n_); }
     void init(int n_) {
         n = n_ + 1;

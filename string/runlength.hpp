@@ -1,8 +1,8 @@
 /* encode: ランレングス圧縮を行う
 */
-vector<pair<char, int>> encode(const string& str) {
+V<pair<char, int>> encode(const string& str) {
     int n = (int)str.size();
-    vector<pair<char, int>> ret;
+    V<pair<char, int>> ret;
     for (int l = 0; l < n;) {
         int r = l + 1;
         for (; r < n && str[l] == str[r]; r++) {};
@@ -14,7 +14,7 @@ vector<pair<char, int>> encode(const string& str) {
 
 /* decode: ランレングス圧縮の復元を行う
 */
-string decode(const vector<pair<char, int>>& code) {
+string decode(const V<pair<char, int>>& code) {
     string ret = "";
     for (auto p : code) {
         for (int i = 0; i < p.second; i++) {

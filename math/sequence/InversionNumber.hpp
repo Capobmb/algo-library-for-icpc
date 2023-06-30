@@ -7,10 +7,10 @@
     計算量 : O(LlogL) ; L=v.size()
 */
 template<typename T>
-long long inversion_number(const std::vector<T>& v) {
+ll inversion_number(const V<T>& v) {
     int n = v.size();
-    long long ret = 0;
-    BIT<long long> fw(n);
+    ll ret = 0;
+    BIT<ll> fw(n);
     for(int i = 0; i < n; i++) {
         ret += fw.sum(v[i] + 1, n);
         fw.add(v[i], 1LL);

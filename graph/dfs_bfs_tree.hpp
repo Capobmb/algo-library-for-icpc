@@ -1,10 +1,10 @@
 struct DfsBfsTree {
-    vector<vector<int>> edges;
+    V<V<int>> edges;
     int n;
-    DfsBfsTree(vector<vector<int>> &edges_) : edges(edges_), n(edges_.size()) {}
+    DfsBfsTree(V<V<int>> &edges_) : edges(edges_), n(edges_.size()) {}
  
-    void dfs_impl(int cur, vector<bool> &seen, vector<pair<int, int>> &output, 
-    const vector<vector<int>> &edges) {
+    void dfs_impl(int cur, V<bool> &seen, V<pair<int, int>> &output, 
+    const V<V<int>> &edges) {
         for (auto& nxt : edges[cur]) {
             if (!seen[nxt]) {
                 seen[nxt] = true;
@@ -14,8 +14,8 @@ struct DfsBfsTree {
         }
     }
  
-    void bfs_impl(int cur, vector<bool> &seen, vector<pair<int, int>> &output, 
-    const vector<vector<int>> &edges) {
+    void bfs_impl(int cur, V<bool> &seen, V<pair<int, int>> &output, 
+    const V<V<int>> &edges) {
         queue<int> que;
         que.push(cur);
         seen[cur] = true;
@@ -33,18 +33,18 @@ struct DfsBfsTree {
     }
 
     // dfs 木を (現頂点, 次頂点) の pair で表現
-    vector<pair<int, int>> dfs(int start) {
-        vector<bool> seen(n);
-        vector<pair<int, int>> res;
+    V<pair<int, int>> dfs(int start) {
+        V<bool> seen(n);
+        V<pair<int, int>> res;
         seen[start] = true;
         dfs_impl(start, seen, res, edges);
         return res;
     }
 
     // bfs 木を (現頂点, 次頂点) の pair で表現
-    vector<pair<int, int>> bfs(int start) {
-        vector<bool> seen(n);
-        vector<pair<int, int>> res;
+    V<pair<int, int>> bfs(int start) {
+        V<bool> seen(n);
+        V<pair<int, int>> res;
         bfs_impl(start, seen, res, edges);
         return res;
     }

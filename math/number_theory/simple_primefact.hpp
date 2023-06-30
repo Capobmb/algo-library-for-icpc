@@ -10,8 +10,8 @@ struct SimplePrimeFact {
         return true;
     }
 
-    vector<T> get_divisor(T M) {
-        vector<T> res;
+    V<T> get_divisor(T M) {
+        V<T> res;
         for (T i = 1; i * i <= M; i++) {
             if (M % i == 0) {
                 res.push_back(i);
@@ -23,8 +23,8 @@ struct SimplePrimeFact {
         return res;
     }
 
-    vector<pair<T, int>> get_prime_factrization(T M) {
-        vector<pair<T, int>> res;
+    V<pair<T, int>> get_prime_factrization(T M) {
+        V<pair<T, int>> res;
         for (T i = 2; i * i <= M; i++) {
             pll pu = {i, 0};
             while (M % i == 0) {

@@ -7,14 +7,14 @@ template <class T, class U>
 using hash_table = __gnu_pbds::gp_hash_table<T, U>;
 
 struct llhash {
-    long long seed;
+    ll seed;
     llhash()
         : seed(std::chrono::high_resolution_clock::now()
                    .time_since_epoch()
                    .count()) {}
-    long long operator()(long long x) const { return x ^ seed; }
+    ll operator()(ll x) const { return x ^ seed; }
 };
-using robust_hash_table = __gnu_pbds::gp_hash_table<long long, long long, llhash>;
+using robust_hash_table = __gnu_pbds::gp_hash_table<ll, ll, llhash>;
 
 template <class T, class U>
 bool count(hash_table<T, U>& mp, T&& key) {

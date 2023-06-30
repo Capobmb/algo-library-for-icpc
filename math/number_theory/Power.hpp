@@ -1,6 +1,6 @@
 /// @return a^n mod MOD
-constexpr long long modpow(long long a, long long n, long long MOD) {
-    long long res = 1;
+constexpr ll modpow(ll a, ll n, ll MOD) {
+    ll res = 1;
     a %= MOD;
     while(n > 0) {
         if(n & 1) res = res * a % MOD;
@@ -11,8 +11,8 @@ constexpr long long modpow(long long a, long long n, long long MOD) {
 }
 
 /// @return a^n
-constexpr long long powll(long long a, long long n) {
-    long long res = 1;
+constexpr ll powll(ll a, ll n) {
+    ll res = 1;
     while(n > 0) {
         if(n & 1) res *= a;
         a *= a;

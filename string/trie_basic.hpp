@@ -4,7 +4,7 @@
 template <int alphabet_size, char base>
 struct Trie {
     struct Node {
-        vector<int> children_ids;  // 1. 子頂点の id たち
+        V<int> children_ids;  // 1. 子頂点の id たち
         int node_char;             // 2. その頂点の文字 : (int)(その文字 - base)
         bool is_endpoint;          // 3. その頂点で終了するか
 
@@ -17,7 +17,7 @@ struct Trie {
         }
     };
 
-    vector<Node> nodes;
+    V<Node> nodes;
     int root;
     Trie() : root(0) { nodes.push_back(Node(root)); }
 

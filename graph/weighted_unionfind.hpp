@@ -1,8 +1,8 @@
 template <typename T>
 struct WeightedUnionFind {
     // diff_weight[i] := i と par[i] との差分
-    vector<int> par, rank;
-    vector<long long> diff_weight;
+    V<int> par, rank;
+    V<ll> diff_weight;
 
     WeightedUnionFind(int N) {
         par.assign(N, -1); 
@@ -17,12 +17,12 @@ struct WeightedUnionFind {
         return par[x] = r;
     }
 
-    long long weight(int x) {
+    ll weight(int x) {
         root(x);
         return diff_weight[x];
     }
 
-    void unite(int x, int y, long long z) {
+    void unite(int x, int y, ll z) {
         z += weight(x) - weight(y);
         int rx = root(x), ry = root(y);
         if (rx == ry) return;

@@ -3,7 +3,7 @@ struct FenwickTree {
     const T INF = numeric_limits<T>::max();
     int N; // 元の配列のサイズ
     int n;
-    vector<T> dat;
+    V<T> dat;
     FenwickTree(int n_) : N(n_), n(), dat(n_ * 4, 0) {
         int x = 1;
         while (n_ > x) {

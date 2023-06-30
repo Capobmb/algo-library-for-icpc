@@ -35,7 +35,7 @@ class BIT {
     }
 
    private:
-    std::vector<T> bit;
+    V<T> bit;
     int size;
     // sum[0, r) = a[0] + ... + a[r-1]
     T internal_sum(int r) const {

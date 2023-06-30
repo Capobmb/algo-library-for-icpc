@@ -13,8 +13,8 @@ struct LiChaoTree {
         T operator()(T x) const { return a * x + b; }   
     };
     int n;                    // セグ木の最下層サイズ
-    std::vector<T> x;         // x座標
-    std::vector<Line> dat;    // セグ木のノード 1-indexed. dat[n+i] = x[i].
+    V<T> x;         // x座標
+    V<Line> dat;    // セグ木のノード 1-indexed. dat[n+i] = x[i].
 
     LiChaoTree () {}
     /**
@@ -24,7 +24,7 @@ struct LiChaoTree {
      * @param _x {線分の追加されるx座標} ∪ {クエリで与えられるx座標}
      */
     template<typename S>
-    LiChaoTree (const std::vector<S>& _x) {
+    LiChaoTree (const V<S>& _x) {
         n = 1;
         while(n < (int)_x.size()) n <<= 1;
         x.assign(n, xub());
@@ -116,7 +116,7 @@ struct LiChaoTree {
 };
 
 // EXAMPLE: RANGE MIN
-// using T = long long;
+// using T = ll;
 // bool comp(T a, T b) {return a < b;}
 // constexpr T e() {return 1LL<<62;}
 // constexpr T xub() {return 1LL<<31;}

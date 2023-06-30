@@ -1,12 +1,12 @@
 struct Fraction {
-    long long numerator;        // 分子
-    long long denominator;      // 分母
+    ll numerator;        // 分子
+    ll denominator;      // 分母
     bool is_inf = false;        // +- infinity か
     bool is_zero = false;       // 0 か
     bool is_minus = false;      // 数として負か
     bool is_both_zero = false;  // 分母も分子も 0 (扱い分からん！)
 
-    Fraction(long long numerator_, long long denominator_) {
+    Fraction(ll numerator_, ll denominator_) {
         if (numerator_ == 0) is_zero = true;
         if (denominator_ == 0) {
             if (numerator_ == 0) is_both_zero = true;
@@ -21,7 +21,7 @@ struct Fraction {
                 denominator_ = abs(denominator_);
             }
             if (numerator_ != 0) {
-                long long g = __gcd(denominator_, numerator_);
+                ll g = __gcd(denominator_, numerator_);
                 denominator = denominator_ / g;
                 numerator = numerator_ / g;
             } else {

@@ -1,12 +1,12 @@
 template<typename T>
-int count_continuous_elements(vector<T> &v, bool cyclic=false) {
+int count_continuous_elements(V<T> &v, bool cyclic=false) {
     int n = (int)v.size();
     if (n == 1) return 1;
 
     int res = 0, cnt = 0;
 
     if (cyclic) {
-        vector<T> v2(2 * n);
+        V<T> v2(2 * n);
         for (int i = 0; i < n; i++) v2[i] = v2[i + n] = v[i];
         for (int i = 0; i < 2 * n - 1; i++) {
             cnt++;

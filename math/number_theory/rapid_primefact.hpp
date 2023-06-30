@@ -4,7 +4,7 @@
  */
 struct RapidPrimeFact {
     int MAX;
-    vector<int> spf;
+    V<int> spf;
     RapidPrimeFact(int N) : MAX(N) { init(N); }
     void init(int N) { // 前処理。spf を求める
         spf.assign(N + 1, 0);
@@ -25,16 +25,16 @@ struct RapidPrimeFact {
         return spf[n] == n;
     }
 
-    std::vector<int> primes() const {
-        std::vector<int> p;
+    V<int> primes() const {
+        V<int> p;
         for(int i = 2; i < MAX; i++) {
             if(is_prime(i)) p.push_back(i);
         }
         return p;
     }
 
-    vector<pair<int, int>> get_prime_factorization(int n) { 
-        vector<pair<int, int>> res;
+    V<pair<int, int>> get_prime_factorization(int n) { 
+        V<pair<int, int>> res;
         pair<int, int> cur = {spf[n], 0};
         while (n != 1) {
             if (spf[n] == cur.first) {

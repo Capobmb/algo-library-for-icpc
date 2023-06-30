@@ -1,11 +1,11 @@
-#include<vector>
+#include<V>
 
 
 /**
  * @brief Euler Phi Function
  */
 struct euler_phi {
-    std::vector<int> sieve;
+    V<int> sieve;
 
     /**
      * @brief Construct a new euler phi object. Time Complexity: O(MAXloglogMAX)
@@ -25,9 +25,9 @@ struct euler_phi {
      * @brief Time Complexity: O(sqrt(x))
      * @return φ(x)
      */
-    long long operator()(long long x) const noexcept {
-        long long ret = 1;
-        for (long long i = 2, b = x; i * i <= b; ++i) {
+    ll operator()(ll x) const noexcept {
+        ll ret = 1;
+        for (ll i = 2, b = x; i * i <= b; ++i) {
             if (sieve[i] < i) continue;
             if (x % i) continue;
 

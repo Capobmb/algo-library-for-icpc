@@ -1,6 +1,6 @@
 struct UnionFind {
-    vector<int> par, rank, siz;
-    // vector<bool> is_tree_impl;
+    V<int> par, rank, siz;
+    // V<bool> is_tree_impl;
 
     // initialization
     UnionFind(int N) : par(N, -1), rank(N, 0), siz(N, 1) 
@@ -42,7 +42,7 @@ struct BipartiteGraph : UnionFind {
     // https://ei1333.github.io/algorithm/union-find.html より
     // validation : https://atcoder.jp/contests/abc282/submissions/37365726
 
-    vector<int> color;
+    V<int> color;
     int v;
     BipartiteGraph(int v_) : v(v_), color(v_ + v_, -1), UnionFind(v_ + v_) {}
 

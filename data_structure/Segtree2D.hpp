@@ -4,13 +4,13 @@ using namespace std;
 template <class S, S (*op)(S, S), S (*e)()> struct segtree2d {
 	public:
 		segtree2d() : segtree2d(0, 0) {}
-		explicit segtree2d(int h, int w) : segtree2d(vector<vector<S>>(h, vector<S>(w, e()))) {}
-		explicit segtree2d(const vector<vector<S>>& u) : _h(int(u.size())), _w(int(u[0].size())) {
+		explicit segtree2d(int h, int w) : segtree2d(V<V<S>>(h, V<S>(w, e()))) {}
+		explicit segtree2d(const V<V<S>>& u) : _h(int(u.size())), _w(int(u[0].size())) {
 			hlog = ceil_pow(_h);
 			hsize = 1 << hlog;
 			wlog = ceil_pow(_w);
 			wsize = 1 << wlog;
-			v = vector<vector<S>>(2 * hsize, vector<S>(2 * wsize, e()));
+			v = V<V<S>>(2 * hsize, V<S>(2 * wsize, e()));
 			for (int i = 0; i < _h; i++) {
 				for (int j = 0; j < _w; j++) {
 						v[hsize + i][wsize + j] = u[i][j];
@@ -69,7 +69,7 @@ template <class S, S (*op)(S, S), S (*e)()> struct segtree2d {
 	private:
 		int _h, hsize, hlog;
 		int _w, wsize, wlog;
-		std::vector<vector<S>> v;
+		V<V<S>> v;
  
 		void update1(int i, int k) { v[i][k] = op(v[i][2 * k], v[i][2 * k + 1]); }
  

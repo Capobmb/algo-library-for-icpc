@@ -9,20 +9,20 @@
 */
 struct mexset {
 private:
-    std::set<std::pair<long long, long long>> s;
+    std::set<std::pair<ll, ll>> s;
 public:
     mexset() {
         s.emplace(LLONG_MIN, LLONG_MIN);
         s.emplace(LLONG_MAX, LLONG_MAX);
     }
     
-    bool contains(long long x) const {
+    bool contains(ll x) const {
         auto it = std::prev(s.lower_bound(std::make_pair(x+1, x+1)));
         auto [l, u] = *it;
         return l <= x && x <= u;
     }
 
-    bool insert(long long x) {
+    bool insert(ll x) {
         auto nit = s.lower_bound(std::make_pair(x+1, x+1));
         auto it = std::prev(nit);
         auto [l, u] = *it;
@@ -51,7 +51,7 @@ public:
         return true;
     }
 
-    long long mex(long long x = 0) const {
+    ll mex(ll x = 0) const {
         auto [l, u] = *std::prev(s.lower_bound(std::make_pair(x+1, x+1)));
 
         if (l <= x && x <= u) return u+1;

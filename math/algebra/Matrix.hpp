@@ -2,7 +2,7 @@
 
 template <class T>
 struct Matrix {
-    template <class value_type> using V = std::vector<value_type>;
+    template <class value_type> using V = V<value_type>;
     int row, col;
     V<V<T>> dat;
 
@@ -11,7 +11,7 @@ struct Matrix {
      */
     Matrix(int row, int col) : Matrix(V<V<T>>(row, V<T>(col, T()))) {}
     /**
-     * @brief Construct a new Matrix from 2D vector
+     * @brief Construct a new Matrix from 2D V
      */
     Matrix(const V<V<T>>& vec) : row(vec.size()), dat(vec) {
         assert(!vec.empty());
@@ -25,7 +25,7 @@ struct Matrix {
      */
     Matrix<T> prod(Matrix<T> b) {
         // global な operator* にしようか
-        // vector のほうも
+        // V のほうも
         assert(col == b.row);
 
         Matrix<T> ret(row, b.col);
@@ -57,7 +57,7 @@ struct Matrix {
     /**
      * @return THIS ^ k
      */
-    Matrix<T> pow(long long k) const {
+    Matrix<T> pow(ll k) const {
         assert(row == col && 0 <= k);
         const int n = row;
         Matrix<T> ret(n, n), a(dat);

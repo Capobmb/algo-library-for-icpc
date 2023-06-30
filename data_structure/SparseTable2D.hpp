@@ -4,10 +4,10 @@
 template<typename T> class SparseTable_2D {
 private:
     const int R, C;
-    std::vector<int> LogTable;
+    V<int> LogTable;
     T**** Table;
 public:
-    SparseTable_2D(const std::vector<vector<T>>& v) : R((int)v.size()), C((int)v[0].size()), LogTable(std::max(R, C) + 1){
+    SparseTable_2D(const V<V<T>>& v) : R((int)v.size()), C((int)v[0].size()), LogTable(std::max(R, C) + 1){
         for(int i = 2; i <= std::max(R, C); ++i){
             LogTable[i] = LogTable[i >> 1] + 1;
         }

@@ -98,5 +98,5 @@ class rational {
         return os << r.num << '/' << r.den;
     }
 };
-// using fraction = rational<long long>;
+// using fraction = rational<ll>;
 // using fraction = rational<int128_t>; // DO UNBUNDLE int128_t operator overload.

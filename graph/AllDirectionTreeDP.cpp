@@ -22,14 +22,14 @@ struct all_direction_tree_dp {
     F merge; // (S, S) -> S : 辺i-jを根とする部分木の結果同士をマージする演算
     G raise; // (S, ℤ, ℤ, C) -> S : 子jを根とする部分木の結果から 辺i-j(コストc)を根とする部分木の結果を得る演算
     H derive; // (S, ℤ) -> S : 辺i-jを根とする部分木の結果の総mergeから親iを根とする部分木の結果を得る演算
-    std::vector<S> ans;
-    std::vector<std::vector<S>> dp; //dp[i][j] : iのj番目の子を根とする部分木
+    V<S> ans;
+    V<V<S>> dp; //dp[i][j] : iのj番目の子を根とする部分木
     struct Edge{
         int to;
         C cost;
         Edge(int to, C cost) : to(to), cost(cost) {}
     };
-    std::vector<std::vector<Edge>> edges;
+    V<V<Edge>> edges;
 
     /**
      * @brief Construct a new all direction tree dp object
@@ -72,7 +72,7 @@ struct all_direction_tree_dp {
         // 半開区間 (i.e 1-indexed, 0-indexed)
         // left_prod[i+1] = merge(dp[now][0],...dp[now][i])
         // right_prod[i] = merge(dp[now][i],...dp[now][deg-1]);
-        std::vector<S> left_prod(deg + 1, e), right_prod(deg + 1, e);
+        V<S> left_prod(deg + 1, e), right_prod(deg + 1, e);
 
         for(int i=0; i<deg; ++i) {
             if(edges[now][i].to == par) dp[now][i] = par_v;
@@ -88,7 +88,7 @@ struct all_direction_tree_dp {
         ans[now] = derive(right_prod[0], now);
     }
 
-    std::vector<S> run() {
+    V<S> run() {
         dfs_sub(0, -1);
         dfs_main(0, -1, e);
         return ans;
@@ -126,10 +126,10 @@ struct all_direction_tree_dp {
 using namespace std;
 int main() {
     int n; cin>>n; 
-    vector<long long> d(n);
+    V<ll> d(n);
 
-    using S = long long;
-    using C = long long;
+    using S = ll;
+    using C = ll;
     auto merge = [](S a, S b) {return max(a, b);};
     auto raise = [&](S a, int i, int j, C c) {return max(a, d[j]) + c;};
     auto derive = [](S a, int i) {return a;};

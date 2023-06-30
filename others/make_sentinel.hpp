@@ -1,10 +1,10 @@
 /* 
-    2次元 vector : A の周囲 4 辺に番兵を設定します
+    2次元 V : A の周囲 4 辺に番兵を設定します
     縦横のサイズを +2 します 
 */
 template<typename T>
-vector<vector<T>> make_sentinel(vector<vector<T>> &A, int& H, int& W, T sentinel) {
-    vector<vector<T>> res(H + 2);
+V<V<T>> make_sentinel(V<V<T>> &A, int& H, int& W, T sentinel) {
+    V<V<T>> res(H + 2);
     for (int j = 0; j < W + 2; j++) {
         res[0].push_back(sentinel);
     }

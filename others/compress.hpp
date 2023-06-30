@@ -3,9 +3,9 @@
     返り値: ソート済みの値(Xにどの値が存在するかを昇順に)
     計算量: O(n log n)
 */
-template <typename T> vector<T> compress(vector<T>& X) {
+template <typename T> V<T> compress(V<T>& X) {
     // ソートした結果を vals に
-    vector<T> vals = X;
+    V<T> vals = X;
     sort(vals.begin(), vals.end());
     // 隣り合う重複を削除(unique), 末端のゴミを削除(erase)
     vals.erase(unique(vals.begin(), vals.end()), vals.end());

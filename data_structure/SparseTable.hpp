@@ -1,6 +1,6 @@
 #include <cassert>
 #include <limits>
-#include <vector>
+#include <V>
 using namespace std;
 // Ref: https://nyaannyaan.github.io/library/data-structure/sparse-table.hpp
 // -----------------
@@ -9,15 +9,15 @@ template <typename T> // THIS
 struct SparseTable {
     inline static constexpr T INF = numeric_limits<T>::max() / 2; // THIS
     int N;
-    vector<vector<T> > table;
+    V<V<T> > table;
     T f(T a, T b) { return min(a, b); } // THIS
     SparseTable() {}
-    SparseTable(const vector<T> &v) : N(v.size()) {
+    SparseTable(const V<T> &v) : N(v.size()) {
         int b = 1;
         while ((1 << b) <= N) ++b;
         table.push_back(v);
         for (int i = 1; i < b; i++) {
-            table.push_back(vector<T>(N, INF));
+            table.push_back(V<T>(N, INF));
             for (int j = 0; j + (1 << i) <= N; j++) {
                 table[i][j] =
                     f(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);

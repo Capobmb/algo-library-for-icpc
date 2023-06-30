@@ -28,12 +28,12 @@ template <class S, S (*op)(S, S), S (*e)(), class F, S (*mapping)(F, S),
 struct LazySegTree {
    public:
     LazySegTree() : LazySegTree(0) {}
-    LazySegTree(int n) : LazySegTree(std::vector<S>(n, e())) {}
-    LazySegTree(const std::vector<S>& v) : _n(int(v.size())) {
+    LazySegTree(int n) : LazySegTree(V<S>(n, e())) {}
+    LazySegTree(const V<S>& v) : _n(int(v.size())) {
         log = internal::ceil_pow2(_n);
         size = 1 << log;
-        d = std::vector<S>(2 * size, e());
-        lz = std::vector<F>(size, id());
+        d = V<S>(2 * size, e());
+        lz = V<F>(size, id());
         for (int i = 0; i < _n; i++) d[size + i] = v[i];
         for (int i = size - 1; i >= 1; i--) {
             update(i);
@@ -189,8 +189,8 @@ struct LazySegTree {
 
    private:
     int _n, size, log;
-    std::vector<S> d;
-    std::vector<F> lz;
+    V<S> d;
+    V<F> lz;
 
     void update(int k) { d[k] = op(d[2 * k], d[2 * k + 1]); }
     void all_apply(int k, F f) {

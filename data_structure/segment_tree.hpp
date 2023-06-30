@@ -5,7 +5,7 @@ struct SegTree {
     FX fx;
     FX update_func;
     const X ex;
-    vector<X> dat;
+    V<X> dat;
     // SegTree<X>(n,fx,ex): モノイド(集合X, 二項演算fx, 単位元ex)についてサイズnで構築
     SegTree(int n_, FX fx_, X ex_) : n(), fx(fx_), ex(ex_), dat(n_ * 4, ex_) {
         int x = 1;

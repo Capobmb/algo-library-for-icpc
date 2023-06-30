@@ -1,6 +1,6 @@
 struct UnionFind {
     // par[i] := parent of i
-    vector<int> par, rank, siz;
+    V<int> par, rank, siz;
 
     // initialization
     UnionFind(int N) : par(N, -1), rank(N, 0), siz(N, 1) {}
@@ -33,10 +33,10 @@ bool comparefunc (const Edge &e1, const Edge &e2) {
 }
 
 struct Kruskal {
-    vector<Edge> edges;
+    V<Edge> edges;
     int V;
     // initialization
-    Kruskal(const vector<Edge> &edges_, int V_) : edges(edges_), V(V_) { init(); }
+    Kruskal(const V<Edge> &edges_, int V_) : edges(edges_), V(V_) { init(); }
 
     void init() {
         sort(edges.begin(), edges.end(), comparefunc);

@@ -3,11 +3,11 @@
     O(|S|)
 */
 template <typename T> 
-vector<int> z_algorithm(const vector<T> &S) {
+V<int> z_algorithm(const V<T> &S) {
     // https://qiita.com/Pro_ktmr/items/16904c9570aa0953bf05 より
     int N = (int)S.size();
     // Z 配列 (Z[i] := S と S[i:] の最長共通接頭辞)
-    vector<int> Z(N); 
+    V<int> Z(N); 
     Z[0] = S.size();
     // i := Z 配列のインデックス
     // j := Z[i] に入るべき値
@@ -43,9 +43,9 @@ vector<int> z_algorithm(const vector<T> &S) {
     Z 配列 (Z[i] := S と S[i:] の最長共通接頭辞) を作成
     O(|S|)
 */
-vector<int> z_algorithm(const string &S) {
+V<int> z_algorithm(const string &S) {
     int N = S.size();
-    vector<char> S_v(N);
+    V<char> S_v(N);
     for (int i = 0; i < N; i++) S_v[i] = S[i];
     return z_algorithm(S_v);
 }

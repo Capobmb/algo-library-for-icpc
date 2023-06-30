@@ -1,4 +1,4 @@
-#include <vector>
+#include <V>
 #include <tuple>
 #include <cassert>
 #include <atcoder/math> // 後で直す
@@ -7,8 +7,8 @@
 // starts from here : 
 struct Barrett {
   using u32 = unsigned int;
-  using i64 = long long;
-  using u64 = unsigned long long;
+  using i64 = ll;
+  using u64 = unsigned ll;
   u32 m;
   u64 im;
   Barrett() : m(), im() {}
@@ -47,14 +47,14 @@ using namespace std;
 
 struct prime_power_binomial {
   int p, q, M;
-  vector<int> fac, ifac, inv;
+  V<int> fac, ifac, inv;
   int delta;
   Barrett bm, bp;
 
   prime_power_binomial(int _p, int _q) : p(_p), q(_q) {
     assert(1 < p && p <= PRIME_POWER_BINOMIAL_M_MAX);
     assert(_q > 0);
-    long long m = 1;
+    ll m = 1;
     while (_q--) {
       m *= p;
       assert(m <= PRIME_POWER_BINOMIAL_M_MAX);
@@ -93,7 +93,7 @@ struct prime_power_binomial {
     }
   }
 
-  long long Lucas(long long n, long long m) {
+  ll Lucas(ll n, ll m) {
     int res = 1;
     while (n) {
       int n0, m0;
@@ -107,10 +107,10 @@ struct prime_power_binomial {
     return res;
   }
 
-  long long C(long long n, long long m) {
+  ll C(ll n, ll m) {
     if (n < m || n < 0 || m < 0) return 0;
     if (q == 1) return Lucas(n, m);
-    long long r = n - m;
+    ll r = n - m;
     int e0 = 0, eq = 0, i = 0;
     int res = 1;
     while (n) {
@@ -135,10 +135,10 @@ struct prime_power_binomial {
 // (M <= 1e7 and max(N) <= 1e18) or (M < 2^30 and max(N) <= 2e7)
 struct arbitrary_mod_binomial {
   int mod;
-  vector<int> M;
-  vector<prime_power_binomial> cs;
+  V<int> M;
+  V<prime_power_binomial> cs;
 
-  arbitrary_mod_binomial(long long md) : mod(md) {
+  arbitrary_mod_binomial(ll md) : mod(md) {
     assert(1 <= md);
     assert(md <= PRIME_POWER_BINOMIAL_M_MAX);
     for (int i = 2; i * i <= md; i++) {
@@ -157,9 +157,9 @@ struct arbitrary_mod_binomial {
     assert(M.size() == cs.size());
   }
 
-  long long C(long long n, long long m) {
+  ll C(ll n, ll m) {
     if (mod == 1) return 0;
-    vector<long long> rem, d;
+    V<ll> rem, d;
     for (int i = 0; i < (int)cs.size(); i++) {
       rem.push_back(cs[i].C(n, m));
       d.push_back(M[i]);

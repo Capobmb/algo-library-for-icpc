@@ -4,7 +4,7 @@ struct ModInt {
     unsigned x;
     ModInt() : x(0) {}
     ModInt(signed sig) { x = sig < 0 ? sig % MOD + MOD : sig % MOD; }
-    ModInt(signed long long sig) { x = sig < 0 ? sig % MOD + MOD : sig % MOD; }
+    ModInt(signed ll sig) { x = sig < 0 ? sig % MOD + MOD : sig % MOD; }
     int get() const { return (int)x; }
     ModInt& operator+=(ModInt that) {
         if ((x += that.x) >= MOD) x -= MOD;
@@ -15,7 +15,7 @@ struct ModInt {
         return *this;
     }
     ModInt& operator*=(ModInt that) {
-        x = (unsigned long long)x * that.x % MOD;
+        x = (unsigned ll)x * that.x % MOD;
         return *this;
     }
     ModInt& operator/=(ModInt that) { return *this *= that.inv(); }
@@ -52,9 +52,9 @@ struct ModInt {
     }
 
     ModInt inv() const {
-        long long a = x, b = MOD, u = 1, v = 0;
+        ll a = x, b = MOD, u = 1, v = 0;
         while (b) {
-            long long t = a / b;
+            ll t = a / b;
             a -= t * b;
             std::swap(a, b);
             u -= t * v;
@@ -63,7 +63,7 @@ struct ModInt {
         return ModInt(u);
     }
 
-    ModInt pow(long long n) const {
+    ModInt pow(ll n) const {
         assert(0 <= n);
         ModInt x = *this, r = 1;
         while (n) {
@@ -84,6 +84,6 @@ ostream& operator<<(ostream& st, const ModInt<MOD> a) {
 using mint = ModInt<998244353>;
 // using mint = Modint<1000000007>;
 
-using vm = vector<mint>;
-using vvm = vector<vm>;
-using vvvm = vector<vvm>;
+using vm = V<mint>;
+using vvm = V<vm>;
+using vvvm = V<vvm>;

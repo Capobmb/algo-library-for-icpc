@@ -48,22 +48,22 @@ int main() {
 #include <set>
 #include <stack>
 #include <unordered_map>
-#include <vector>
+#include <V>
 
 using namespace std;
-using ll = long long;
-using vi = vector<int>;
-using vvi = vector<vi>;
-using vvvi = vector<vvi>;
-using vl = vector<ll>;
-using vvl = vector<vl>;
-using vvvl = vector<vvl>;
-using vb = vector<bool>;
-using vvb = vector<vb>;
+using ll = ll;
+using vi = V<int>;
+using vvi = V<vi>;
+using vvvi = V<vvi>;
+using vl = V<ll>;
+using vvl = V<vl>;
+using vvvl = V<vvl>;
+using vb = V<bool>;
+using vvb = V<vb>;
 using pii = pair<int, int>;
 using pli = pair<ll, int>;
 using pll = pair<ll, ll>;
-using vpl = vector<pll>;
+using vpl = V<pll>;
 
 #define _overload(_1, _2, _3, name, ...) name
 #define rep1(n) rep3(____, 0, n)
@@ -112,36 +112,36 @@ constexpr auto max(T... a) {
     return max(initializer_list<common_type_t<T...>>{a...});
 }
 
-int equal_or_smaller_nums(int elem, vector<int> &v) {
+int equal_or_smaller_nums(int elem, V<int> &v) {
     return upper_bound(v.begin(), v.end(), elem) - v.begin();
 }
-int equal_or_smaller_nums(long long elem, vector<long long> &v) {
+int equal_or_smaller_nums(ll elem, V<ll> &v) {
     return upper_bound(v.begin(), v.end(), elem) - v.begin();
 }
 
-int smaller_nums(int elem, vector<int> &v) {
+int smaller_nums(int elem, V<int> &v) {
     return lower_bound(v.begin(), v.end(), elem) - v.begin();
 }
-int smaller_nums(long long elem, vector<long long> &v) {
+int smaller_nums(ll elem, V<ll> &v) {
     return lower_bound(v.begin(), v.end(), elem) - v.begin();
 }
 
-int equal_or_larger_nums(int elem, vector<int> &v) {
+int equal_or_larger_nums(int elem, V<int> &v) {
     return v.end() - lower_bound(v.begin(), v.end(), elem);
 }
-int equal_or_larger_nums(long long elem, vector<long long> &v) {
+int equal_or_larger_nums(ll elem, V<ll> &v) {
     return v.end() - lower_bound(v.begin(), v.end(), elem);
 }
 
-int larger_nums(int elem, vector<int> &v) {
+int larger_nums(int elem, V<int> &v) {
     return v.end() - upper_bound(v.begin(), v.end(), elem);
 }
-int larger_nums(long long elem, vector<long long> &v) {
+int larger_nums(ll elem, V<ll> &v) {
     return v.end() - upper_bound(v.begin(), v.end(), elem);
 }
 
 template <typename T>
-ostream& operator<<(ostream& os, const vector<T>& v) {
+ostream& operator<<(ostream& os, const V<T>& v) {
     int sz = (int)v.size();
     for (int i = 0; i < sz; i++) {
         os << v[i] << (i == sz - 1 ? "" : " ");
@@ -150,7 +150,7 @@ ostream& operator<<(ostream& os, const vector<T>& v) {
 }
 
 template <typename T>
-istream& operator>>(istream& is, vector<T>& v) {
+istream& operator>>(istream& is, V<T>& v) {
     int sz = (int)v.size();
     for (int i = 0; i < sz; i++) {
         is >> v[i];

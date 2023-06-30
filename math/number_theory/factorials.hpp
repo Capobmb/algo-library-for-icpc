@@ -1,6 +1,6 @@
 template <typename T, int FAC_MAX>
 struct Factorials {
-    vector<T> fac, ifac;
+    V<T> fac, ifac;
     Factorials() {
         fac.resize(FAC_MAX, 1);
         ifac.resize(FAC_MAX, 1);

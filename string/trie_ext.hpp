@@ -9,8 +9,8 @@
 template <int char_size, int base>
 struct Trie {
     struct Node {            // 頂点を表す構造体
-        vector<int> next;    // 子の頂点番号を格納。存在しなければ -1
-        vector<int> accept;  // 末端がこの頂点になる単語の word_id を保存
+        V<int> next;    // 子の頂点番号を格納。存在しなければ -1
+        V<int> accept;  // 末端がこの頂点になる単語の word_id を保存
         int c;               // base からの間隔を int 型で表現したもの
         int common;          // いくつの単語がこの頂点を共有しているか
         Node(int c_) : c(c_), common(0) {
@@ -18,7 +18,7 @@ struct Trie {
         }
     };
 
-    vector<Node> nodes;  // Trie 木本体
+    V<Node> nodes;  // Trie 木本体
     int root;
     Trie() : root(0) {
         nodes.push_back(Node(root));

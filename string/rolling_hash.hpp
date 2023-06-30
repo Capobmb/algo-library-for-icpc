@@ -6,11 +6,11 @@ struct rolling_hash {
     // Ref : https://qiita.com/keymoon/items/11fac5627672a6d6a9f6 (Last viewed 2023-01-09)
     int n;
 
-    using ull = unsigned long long;
+    using ull = unsigned ll;
     static constexpr ull MOD = (1UL << 61) - 1;
     // static constexpr int base = 9973;
     static inline const ull base = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();;
-    std::vector<ull> hash, power;
+    V<ull> hash, power;
 
     /**
      * @return r = a*b mod 2^61-1 such that 0 <= r < 4*MOD

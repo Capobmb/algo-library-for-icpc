@@ -1,13 +1,13 @@
 struct Doubling {
     int N;
-    vector<int> nxt;
-    vector<vector<int>> doubling;
+    V<int> nxt;
+    V<V<int>> doubling;
     const int logK = 62;
     
-    Doubling(const vector<int>& nxt_) : 
+    Doubling(const V<int>& nxt_) : 
         nxt(nxt_), N(nxt_.size()) 
     {
-        doubling.assign(logK, vector<int>(N));
+        doubling.assign(logK, V<int>(N));
         init();
     }
 
@@ -23,7 +23,7 @@ struct Doubling {
         }
     }
 
-    int query(int now, long long K) {
+    int query(int now, ll K) {
         // クエリ O(log K)
         for (int k = 0; K > 0; k++) {
             if (K & 1) now = doubling[k][now];

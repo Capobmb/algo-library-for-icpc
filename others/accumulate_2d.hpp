@@ -1,12 +1,12 @@
 template <typename T>
 struct Accumulate2D {
     int h, w;
-    vector<vector<T>> accum;
+    V<V<T>> accum;
 
-    void init(vector<vector<T>>& _field) {
+    void init(V<V<T>>& _field) {
         h = _field.size();
         w = _field[0].size();
-        accum.resize(h + 1, vector<T>(w + 1, 0));
+        accum.resize(h + 1, V<T>(w + 1, 0));
         for (int i = 0; i < h; i++) {
             for (int j = 0; j < w; j++) {
                 accum[i + 1][j + 1] +=

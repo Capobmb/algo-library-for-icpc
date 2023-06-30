@@ -1,7 +1,7 @@
 struct Point {
-    long long x, y;
+    ll x, y;
 
-    Point(long long x_ = 0, long long y_ = 0) : x(x_), y(y_) {}
+    Point(ll x_ = 0, ll y_ = 0) : x(x_), y(y_) {}
 
     // bool operator== (const Point& other) const {
     //     return x == other.x && y == other.y;
