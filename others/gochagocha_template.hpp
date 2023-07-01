@@ -8,22 +8,21 @@
 // using mint = atcoder::modint998244353;
 // using mint = atcoder::modint1000000007;
 
-
-
 void solve() {
-    
+
 }
 
 int main() {
-    cin.tie(0); ios::sync_with_stdio(false); 
+    cin.tie(0); ios::sync_with_stdio(false);
     cout << fixed << setprecision(12);
+    cerr << fixed << setprecision(3);
 
     int testcases = 1;
     // cin >> testcases;
     while(testcases--) solve();
 }
 
-#else // INCLUDED_MAIN
+#else  // INCLUDED_MAIN
 
 #ifdef poyo
 
@@ -48,10 +47,16 @@ int main() {
 #include <set>
 #include <stack>
 #include <unordered_map>
-#include <V>
+#include <vector>
 
 using namespace std;
-using ll = ll;
+using ll = long long;
+using ull = unsigned long long;
+using ld = long double;
+template <class T> using V = vector<T>;
+template <class T, class U> using P = pair<T, U>;
+template <class T> using max_heap = priority_queue<T>;
+template <class T> using min_heap = priority_queue<T, vector<T>, greater<T> >;
 using vi = V<int>;
 using vvi = V<vi>;
 using vvvi = V<vvi>;
@@ -73,7 +78,8 @@ using vpl = V<pll>;
 
 #define rrep(i, a, b) for (ll i = a; i >= b; i--)
 #define fore(i, a) for (auto&& i : a)
-#define all(x) (x).begin(), (x).end()
+#define ALL(x) (x).begin(), (x).end()
+#define RALL(x) (x).rbegin(), (x).rend()
 #define pb push_back
 
 #define UNIQUIFY(v) v.erase(unique(v.begin(), v.end()), v.end());
@@ -83,8 +89,24 @@ using vpl = V<pll>;
     { cerr << #x << ": " << x << "\n"; }
 #define inc(x, l, r) ((l) <= (x) and (x) < (r))
 
-const int INFI = 1 << 30;
-const ll INFL = 1LL << 60;
+// debug macro.
+#ifdef LOCAL
+void debug_out() { cerr << endl; }
+template <class Head, class... Tail>
+void debug_out(Head H, Tail... T) {
+    cerr << ", " << H;
+    debug_out(T...);
+}
+#define debug(...) cerr << "Line " << __LINE__ << " : " << #__VA_ARGS__ << " ,,", debug_out(__VA_ARGS__)
+#else
+#define debug(...) (void(0))
+#endif
+
+constexpr int INFI = 1 << 30;
+constexpr ll INFL = 1LL << 60;
+constexpr char ENDL = '\n';
+constexpr int dy[] = {0, 1, 0, -1};
+constexpr int dx[] = {1, 0, -1, 0};
 
 template <typename S, typename T>
 bool chmax(S& a, const T& b) {
@@ -111,6 +133,8 @@ template <class... T>
 constexpr auto max(T... a) {
     return max(initializer_list<common_type_t<T...>>{a...});
 }
+ll max(ll lhs, ll rhs) { return std::max<ll>(lhs, rhs); }
+ll min(ll lhs, ll rhs) { return std::min<ll>(lhs, rhs); }
 
 int equal_or_smaller_nums(int elem, V<int> &v) {
     return upper_bound(v.begin(), v.end(), elem) - v.begin();
@@ -140,6 +164,11 @@ int larger_nums(ll elem, V<ll> &v) {
     return v.end() - upper_bound(v.begin(), v.end(), elem);
 }
 
+template <class T, class U>
+istream& operator>>(istream& is, P<T, U>& p) {
+    return is >> p.first >> p.second;
+}
+
 template <typename T>
 ostream& operator<<(ostream& os, const V<T>& v) {
     int sz = (int)v.size();
@@ -147,6 +176,11 @@ ostream& operator<<(ostream& os, const V<T>& v) {
         os << v[i] << (i == sz - 1 ? "" : " ");
     }
     return os;
+}
+
+template <class T, class U>
+ostream& operator<<(ostream& os, P<T, U>& p) {
+    return os << p.first << ' ' << p.second;
 }
 
 template <typename T>
@@ -161,5 +195,5 @@ istream& operator>>(istream& is, V<T>& v) {
 int dx[] = {0, -1, 0, 1, -1, -1, 1, 1};
 int dy[] = {-1, 0, 1, 0, 1, -1, -1, 1};
 
-#endif // poyo
-#endif // INCLUDED_MAIN
+#endif  // poyo
+#endif  // INCLUDED_MAIN
